@@ -1,0 +1,120 @@
+\question % 2020 Exam, Q7.
+
+\begin{parts}
+
+\part[3]
+Let $c$ be a real number. Using the fact that $\sin^3(x) = \sin^2(x)\sin(x)$, show that
+\[
+    \int \sin^3(x) \dif x = -\cos(x) + \frac{1}{3}\cos^3(x) + c.
+\]
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[2in]
+Since $\sin^3(x) = (1 - \cos^2(x))\sin(x)$, on putting $u = \cos(x)$ there is
+\[
+    \dif u = -\sin(x)\dif x, \qquad \dif x = \frac{\dif u}{-\sin(x)}.
+\]
+Thus,
+\begin{align*}
+    \int \sin^3(x) \dif x &= \int (1 - u^2)\cancel{\sin(x)} \frac{\dif u}{-\cancel{\sin(x)}} \\
+    &= -\int 1 - u^2 \dif u \\
+    &= -(u - \frac{1}{3} u^3 + c_1) \\
+    &= -\cos(x) + \frac{1}{3}\cos^3(x) + c.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part
+Figure~\ref{fig:graph-of-sine-cubed-and-identity-function} shows the graphs of $f(x) = \sin^3(x)$, for $\displaystyle{0 \leq x \leq \frac{\pi}{2}}$, and $g(x) = x$, for $x \geq 0$.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        my axis style,
+        axis equal image,
+        xmax=4.5*pi/6, ymax=4.5*pi/6,
+        xtick={0,pi/6,pi/3,pi/2,2*pi/3},
+        xticklabels={$0$,,,$\frac{\pi}{2}$,},
+        ytick={0,pi/6,pi/3,pi/2,2*pi/3},
+        yticklabels={$0$,,,$\frac{\pi}{2}$,},
+        grid=both,
+        legend entries={
+            $y = \sin^3(x)$,
+            $y = x$
+        },
+    ]
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (pi/2,1);
+    \coordinate (C) at (1,pi/2);
+    \addplot[
+        domain=0:pi/2,
+        -,
+    ] {(sin(x))^3};
+    \addplot[
+        domain=0:2*pi/3,
+        dashed,
+        ->,
+    ] {x};
+    \ifprintanswers
+    \addplot[
+        domain=0:1,
+        red,
+        -,
+    ] {(asin(x^(1/3))} node[pos=.15, left] {$y = f^{-1}(x)$};
+    \fill[red] (C) circle (2pt) node[above right] {$(1, \frac{\pi}{2})$};
+    \draw[red] (2*pi/3,pi/6) node[anchor=west, text width=2in, rounded corners=5pt, fill=white, draw=red] {always include interesting points, $y = \textrm{such-and-such}$, arrowheads or closed endpoints};
+    \else
+    \fi
+    \fill[black] (A) circle (2pt) (B) circle (2pt);
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Sketch the inverse function here.}
+    \label{fig:graph-of-sine-cubed-and-identity-function}
+\end{figure}
+
+\begin{subparts}
+
+\subpart[1]
+Find $f(\frac{\pi}{2})$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[.75in]
+We have
+\[
+    f(\tfrac{\pi}{2}) = 1.
+\]
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\subpart[1]
+Explain why the function $f(x)$ has an inverse function.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[.75in]
+The inverse exists because $f$ is injective (one-to-one).
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\subpart[1]
+On Figure~\ref{fig:graph-of-sine-cubed-and-identity-function}, sketch the graph of the inverse function $f^{-1}(x)$.
+
+\end{subparts}
+
+\part[4]
+Use parts (a) and (b) to show that $\displaystyle{\int_0^1 f^{-1}(x) \dif x = \frac{\pi}{2} - \frac{2}{3}}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[4.5in]
+By symmetry, the area under the curve is the area of the rectangle of base $1$ and height $\frac{\pi}{2}$ minus the area under the original function. Thus,
+\begin{align*}
+    \int_0^1 f^{-1}(x) \dif x &= \frac{\pi}{2} \times 1 - \int_0^{\sfrac{\pi}{2}} \sin^3(x) \dif x \\
+    &= \frac{\pi}{2} + \Eval{\cos(x) - \frac{1}{3}\cos^3(x)}{0}{\sfrac{\pi}{2}} && (\textrm{by (a)}) \\
+    &= \frac{\pi}{2} + \left(\cos(\tfrac{\pi}{2}) - \frac{1}{3}\cos^3(\tfrac{\pi}{2})\right) - \left(\cos(0) - \frac{1}{3}\cos^3(0)\right) \\
+    &= \frac{\pi}{2} - \left(1 - \frac{1}{3}\right) \\
+    &= \frac{\pi}{2} - \frac{2}{3}.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\end{parts}

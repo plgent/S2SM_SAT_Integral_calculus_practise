@@ -1,0 +1,36 @@
+\question % Sample Questions 2, Q8.
+
+\begin{parts}
+
+\part[2]
+Find the values of $A$ and $B$ such that $\displaystyle{\frac{A}{x - 3} - \frac{B}{(x + 3)(x - 3)} = \frac{4x}{x^2 - 9}}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[2in]
+On setting common denominators
+\[
+    \frac{A(x + 3)}{(x - 3)(x + 3)} - \frac{B}{(x + 3)(x - 3)} = \frac{Ax + 3A - B}{x^2 - 9}.
+\]
+Thus, $Ax + 3A - B = 4x$, so $A = 4$ and $B = 12$.
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[4]
+Hence, find $\displaystyle{\int \frac{12}{x^2 - 9} \dif x}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[3.75in]
+By part (a)
+\[
+    \int \frac{12}{x^2 - 9} \dif x = \int \frac{4}{x - 3} - \frac{4x}{x^2 - 9} \dif x.
+\]
+Put $u = x^2 - 9$, so $\dif u = 2x \dif x$ and $\displaystyle{\dif x = \frac{\dif u}{2x}}$. Then
+\begin{align*}
+    \int \frac{12}{x^2 - 9} \dif x &= 4\ln(\abs{x - 3}) - \int \frac{2 \cancel{\times 2x}}{u} \frac{\dif u}{\cancel{2x}} \\
+    &= 4\ln(\abs{x - 3}) - 2\int \frac{\dif u}{u} \\
+    &= 4\ln(\abs{x - 3}) - 2\ln(\abs{x^2 - 9}) + c.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\end{parts}

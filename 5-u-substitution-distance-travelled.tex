@@ -1,0 +1,76 @@
+\question % 2018 Exam, Q6.
+Let $t$ be the time, in seconds. An object has a velocity, in metres per second, given by
+\[
+    v(t) = \E^{\cos^2(t)} \sin(2t).
+\]
+
+\begin{parts}
+
+\part[3]
+On the axes in Figure~\ref{fig:velocity-of-an-object} sketch the graph of $y = v(t)$, for $0 \leq t \leq \pi$.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        my axis style,
+        xmin=0,
+        xmax=pi+.3,
+        ymin=-2.2,
+        ymax=2.2,
+        xtick={0,pi/4,pi/2,3*pi/4,pi},
+        xticklabels={$0$,$\frac{\pi}{4}$,$\frac{\pi}{2}$,$\frac{3\pi}{4}$,$\pi$},
+        minor y tick num=1,
+        grid=both,
+        xlabel=$T$,
+        ylabel=$V$,
+    ]
+    \ifprintanswers
+    \addplot[
+        domain=0:pi,
+        red,
+        -,
+    ] {exp((cos(x))^2)*sin(2*x)} node[pos=.85, right] {$y = v(t)$};
+    \fill[red] (0,0) node[above left] {$(0, 0)$} circle (2pt) (pi/2,0) node[above right] {$(\frac{\pi}{2}, 0)$} circle (2pt) (pi,0) node[above] {$(\pi, 0)$} circle (2pt);
+    \draw[red] (3*pi/4,1.5) node[anchor=west, text width=2in, rounded corners=5pt, fill=white, draw=red] {always include interesting points, $y = \textrm{such-and-such}$, arrowheads or closed endpoints};
+    \else
+    \fi
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Graph the velocity function here.}
+    \label{fig:velocity-of-an-object}
+\end{figure}
+
+\part[3]
+Find the \emph{exact} distance travelled by the object between $t = 0$ and $\displaystyle{t = \frac{\pi}{2}}$ seconds.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[2.5in]
+Let $u = \cos^2(t)$, so $\dif u = -2\sin(t)\cos(t) \dif t$ and $\displaystyle{\dif t = \frac{\dif u}{-\sin(2t)}}$. At the limits
+\[
+    t = 0, \qquad u = 1, \qquad t = \frac{\pi}{2}, \qquad u = 0.
+\]
+On $u$-substitution
+\begin{align*}
+    d &= \int_0^{\sfrac{\pi}{2}} \E^{\cos^2(t)} \sin(2t) \dif t \\
+    &= \int_1^0 \E^u \cancel{\sin(2t)} \frac{\dif u}{-\cancel{\sin(2t)}} \\
+    &= \int_0^1 \E^u \dif u \\
+    &= \Eval{\E^u}{0}{1} \\
+    &= \E - 1 \,\, \si{\meter}.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[1]
+Hence, find the distance travelled between $t = 0$ and $t = \pi$ seconds.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[1.5in]
+On the basis of symmetry the total is
+\[
+    D = 2(\E  - 1) \,\, \si{\meter}.
+\]
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\end{parts}

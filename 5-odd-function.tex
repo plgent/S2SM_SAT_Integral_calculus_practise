@@ -1,0 +1,82 @@
+\question % 2012 Exam, Q2.
+
+\begin{parts}
+
+\part[2]
+Show that $\displaystyle{\diff{}{\theta}(\tan(\theta)) = \sec^2(\theta)}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[1.5in]
+By the quotient rule
+\begin{align*}
+    \diff{}{\theta}(\tan(\theta)) &= \diff{}{\theta}\!\pfrac{\sin(\theta)}{\cos(\theta)} \\
+    &= \frac{\cos^2(\theta) + \sin^2(\theta)}{\cos^2(\theta)} \\
+    &= \sec^2(\theta).
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[2]
+If $f(x) = \sec^2(x)\tan^3(x)$, compute $\displaystyle{\int f(x) \dif x}$. \emph{Hint}: $u$-substitution.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[3in]
+Put $u = \tan(x)$, so $\dif u = \sec^2(x) \dif x$ and $\displaystyle{\dif x = \frac{\dif u}{\sec^2(x)}}$. Thus,
+\begin{align*}
+    \int f(x) \dif x &= \int \cancel{\sec^2(x)} u^3 \frac{\dif u}{\cancel{\sec^2(x)}} \\
+    &= \frac{1}{4} u^4 + c_1 \\
+    &= \frac{1}{4} \tan^4(x) + c.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[2]
+Hence, evaluate \emph{exactly} $\displaystyle{\int_0^{\sfrac{\pi}{3}} \sec^2(x)\tan^3(x) \dif x}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[3in]
+By part (b) we have
+\begin{align*}
+    \int_0^{\sfrac{\pi}{3}} \sec^2(x)\tan^3(x) \dif x &= \frac{1}{4} \Eval{\tan^4(x)}{0}{\sfrac{\pi}{3}} \\
+    &= \frac{1}{4} (3^{\sfrac{1}{2}})^4 \\
+    &= \frac{9}{4}.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[2]
+Show that $f$ is an odd function.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[1.75in]
+\begin{proof}
+Note that
+\begin{align*}
+    f(-x) &= \frac{(\sin(-x))^3}{(\cos(-x))^5} \\
+    &= \frac{(-\sin(x))^3}{(\cos(x))^5} && (\textrm{sine is odd, cosine is even}) \\
+    &= \frac{-(\sin(x))^3}{(\cos(x))^5} && (\textrm{cubing function is odd}) \\
+    &= -f(x).
+\end{align*}
+\end{proof}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[2]
+Hence, find the value of $\displaystyle{\int_{-\sfrac{\pi}{3}}^a f(x) \dif x}$ given that $\displaystyle{\int_0^a f(x) \dif x = 5}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[3in]
+By the oddness of $f$
+\[
+    \int_{-\sfrac{\pi}{3}}^0 f(x) \dif x = -\frac{9}{4}.
+\]
+Adding the pieces gives
+\begin{align*}
+    \int_{-\sfrac{\pi}{3}}^a f(x) \dif x &= \int_{-\sfrac{\pi}{3}}^0 f(x) \dif x + \int_0^a f(x) \dif x \\
+    &= -\frac{9}{4} + \frac{20}{4} \\
+    &= \frac{11}{4}.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\end{parts}

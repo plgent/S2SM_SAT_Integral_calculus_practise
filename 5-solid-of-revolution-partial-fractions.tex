@@ -1,0 +1,94 @@
+\question % Sample Questions 1, Q9.
+
+\begin{parts}
+
+\part[3]
+On the axes in Figure~\ref{fig:graph-of-rational-function}, sketch the graph of $\displaystyle{f(x) = \frac{2}{(x - 1)(x + 1)}}$.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        my axis style,
+        height=3.25in,
+        xmin=-4.5, xmax=4.5,
+        ymin=-9, ymax=9,
+        grid=both,
+    ]
+    \coordinate (A) at (0,-2);
+    \ifprintanswers
+    \addplot[
+        domain=-4:-1.125,
+        red,
+        <->,
+    ] {2/(x^2-1)};
+    \addplot[
+        domain=-.875:.875,
+        red,
+        <->,
+    ] {2/(x^2-1)};
+    \addplot[
+        domain=1.125:4,
+        red,
+        <->,
+    ] {2/(x^2-1)} node[near start, right] {$y = f(x)$};
+    \fill[red] (A) circle (2pt) node[above] {$(0, -2)$};
+    \draw[semithick, dashed, red, <->] (-1,-8.5) -- node[near start, left] {$x = -1$} (-1,8.5);
+    \draw[semithick, dashed, red, <->] (1,-8.5) -- node[near start, right] {$x = 1$} (1,8.5);
+    \draw[semithick, dashed, red, <->] (-4.25,0) -- node[pos=.15, below] {$y = 0$} (4.25,0);
+    \draw[red] (3,-5) node[anchor=west, text width=2in, rounded corners=5pt, fill=white, draw=red] {always include dashed, labelled asymptotes, interesting points, $y = \textrm{such-and-such}$, arrowheads or closed endpoints};
+    \else
+    \fi
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Sketch the graph here.}
+    \label{fig:graph-of-rational-function}
+\end{figure}
+
+\part[1]
+Show that $\displaystyle{\frac{2}{(x - 1)(x + 1)} = \frac{1}{x - 1} - \frac{1}{x + 1}}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[1.5in]
+The RHS is
+\begin{align*}
+    \frac{1}{x - 1} - \frac{1}{x + 1} &= \frac{(x + 1) - (x - 1)}{(x - 1)(x + 1)} \\
+    &= \frac{2}{(x - 1)(x + 1)},
+\end{align*}
+which is the LHS.
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[1]
+Hence, show that $\displaystyle{(f(x))^2 = \frac{1}{(x - 1)^2} + \frac{1}{(x + 1)^2} - \frac{1}{x - 1} + \frac{1}{x + 1}}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[2in]
+We have
+\begin{align*}
+    (f(x))^2 &= \left(\frac{1}{x - 1} - \frac{1}{x + 1}\right)^{\! 2} \\
+    &= \pfrac{1}{x - 1}^{\! 2} - 2 \pfrac{1}{x - 1}\!\pfrac{1}{x + 1} + \pfrac{1}{x + 1}^{\! 2} \\
+    &= \frac{1}{(x - 1)^2} - \left(\frac{1}{x - 1} - \frac{1}{x + 1}\right) + \frac{1}{(x + 1)^2} && (\textrm{by (a)}) \\
+    &= \frac{1}{(x - 1)^2} + \frac{1}{(x + 1)^2} - \frac{1}{x - 1} + \frac{1}{x + 1}.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[4]
+Find the \emph{exact} volume of the solid obtained when the region bounded by the graph of $f(x)$ and the $x$-axis on the interval $[2, 3]$ is rotated about the $x$-axis.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[4in]
+The volume is
+\begin{align*}
+    V &= \pi \int_2^3 y^2 \dif x \\
+    &= \pi \int_2^3 \frac{1}{(x - 1)^2} + \frac{1}{(x + 1)^2} - \frac{1}{x - 1} + \frac{1}{x + 1} \dif x && (\textrm{by (b)}) \\
+    &= \pi \Eval{-\frac{1}{x - 1} - \frac{1}{x + 1} - \ln(\abs{x - 1}) + \ln(\abs{x + 1})}{2}{3} \\
+    &= \pi \Eval{\ln\!\pfrac{x + 1}{x - 1} - \frac{2x}{x^2 - 1}}{2}{3} && (x > 0) \\
+    &= \pi \left(\ln\!\pfrac{4}{2} - \frac{6}{8} - \left(\ln\!\pfrac{3}{1} - \frac{4}{3}\right)\right) \\
+    &= \pi\left(\ln\!\pfrac{2}{3} + \frac{7}{12}\right) \, \textrm{units}^3.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\end{parts}

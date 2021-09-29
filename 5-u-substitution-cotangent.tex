@@ -1,0 +1,78 @@
+\question % 2014 Exam, Q4.
+
+\begin{parts}
+
+\part[2]
+Find, to four decimal places, the value of $\displaystyle{\int_{\sfrac{\pi}{6}}^{\sfrac{\pi}{4}} \cot(\theta) \dif \theta}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[.75in]
+By technology
+\[
+    \int_{\sfrac{\pi}{6}}^{\sfrac{\pi}{4}} \cot(\theta) \dif \theta \approx 0.3466.
+\]
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[4]
+Show that $\displaystyle{\int_{\sfrac{\pi}{6}}^{\sfrac{\pi}{4}} \cot(\theta) \dif \theta = \ln(\sqrt{2})}$. \emph{Hint}: $\displaystyle{\cot(\theta) = \frac{\cos(\theta)}{\sin(\theta)}}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[5in]
+Let $u = \sin(\theta)$, so $\dif u = \cos(\theta) \dif \theta$ and $\displaystyle{\dif \theta = \frac{\dif u}{\cos(\theta)}}$. At the limits
+\[
+    \theta = \frac{\pi}{6}, \qquad u = \frac{1}{2}, \qquad \theta = \frac{\pi}{4} , \qquad u = \frac{1}{\sqrt{2}}.
+\]
+On $u$-substitution we get
+\begin{align*}
+    \int_{\sfrac{\pi}{6}}^{\sfrac{\pi}{4}} \frac{\cos(\theta)}{\sin(\theta)} \dif \theta &= \int_{\sfrac{1}{2}}^{\sfrac{1}{\sqrt{2}}} \frac{\cancel{\cos(\theta)}}{u} \frac{\dif u}{\cancel{\cos(\theta)}} \\
+    &= \Eval{\ln(u)}{\sfrac{1}{2}}{\sfrac{1}{\sqrt{2}}} && (u > 0) \\
+    &= \ln(2^{-\sfrac{1}{2}}) - \ln(2^{-1}) \\
+    &= \ln(2^{\sfrac{1}{2}}) \\
+    &= \ln(\sqrt{2}).
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[2]
+Illustrate your answer to part (b) in Figure~\ref{fig:definite-integral-of-cotangent}.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        my axis style,
+        xmin=0,
+        xmax=pi+.3,
+        xtick={0,pi/12,...,pi},
+        xticklabels={$0$,,,,,,$\frac{\pi}{2}$,,,,,,$\pi$},
+        ytick=\empty,
+        xlabel=$\Theta$,
+        legend pos=north east,
+        legend entries={
+            $y = f(\theta)$,
+        },
+    ]
+    \addplot[
+        domain=0+.4:pi-.4,
+        <->,
+    ] {cot(x)};
+    \fill[] (pi/2,0) circle (2pt) node[above right] {$(\frac{\pi}{2}, 0)$};
+    \ifprintanswers
+    \addplot[domain=pi/6:pi/4,name path=A,opacity=0]{cot(x)};
+    \addplot[domain=pi/6:pi/4,name path=B,opacity=0]{0};
+    \addplot[
+        pattern=north west lines,
+        pattern color=red!60
+    ] fill between[of=A and B];
+    \draw[semithick, red] (pi/6, 1.732) -- (pi/6, 0) -- node[below] {$\displaystyle{\int_{\sfrac{\pi}{6}}^{\sfrac{\pi}{4}} \cot(\theta) \dif \theta}$} (pi/4, 0) -- (pi/4, 1);
+    \draw[red] (pi,-1.25) node[anchor=west, text width=2in, rounded corners=5pt, fill=white, draw=red] {always include interesting points, $y = \textrm{such-and-such}$, arrowheads or closed endpoints};
+    \else
+    \fi
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Show your answer here.}
+    \label{fig:definite-integral-of-cotangent}
+\end{figure}
+
+\end{parts}

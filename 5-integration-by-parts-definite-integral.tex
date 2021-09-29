@@ -1,0 +1,123 @@
+\question % Sample Paper - Book 1, Q8.
+
+\begin{parts}
+
+\part[4]
+Let $c$ be a real number. Use integration by parts to show that
+\[
+    \int x\sin(2x) \dif x = \frac{1}{4} \sin(2x) - \frac{1}{2} x\cos(2x) + c.
+\]
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[4in]
+Put $u = x$ and $\dif v = \sin(2x) \dif x$. By the DI method
+
+\vspace{.125in}
+
+\begin{center}
+	\begin{tabular}{lcc}
+	\toprule
+	& D & I \\
+	\midrule
+	\addlinespace
+	$+$ & $x$\tikzmark{p} & $\sin(2x)$ \\
+	\addlinespace
+	$-$ & $1$\tikzmark{q} & \tikzmark{r}$-\frac{1}{2}\cos(2x)$ \\
+	\addlinespace
+	$+$ & $0$\tikzmark{s} & \tikzmark{t}$-\frac{1}{4}\sin(2x)$ \\
+	\addlinespace
+	\bottomrule
+	\end{tabular}
+	\begin{tikzpicture}[
+	    overlay,
+	    remember picture,
+	    yshift=.25\baselineskip,
+	    shorten >=.5pt,
+	    shorten <=.5pt,
+	]
+	\draw [->] ({pic cs:p}) to ({pic cs:r});
+	\draw [->] ({pic cs:q}) to ({pic cs:t});
+	\end{tikzpicture}
+\end{center}
+
+\vspace{.125in}
+
+Thus,
+\[
+    \int x\sin(2x) \dif x = \frac{1}{4}\sin(2x) - \frac{1}{2}x\cos(2x) + c.
+\]
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\ifprintanswers
+\else
+\newpage
+\fi
+\uplevel{Figure~\ref{fig:graph-of-function-to-be-integrated-by-parts} shows the graph of $y = x\sin(2x)$, where $0 \leq x \leq \pi$.}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        my axis style,
+        xmin=0,
+        xmax=pi+.3,
+        ymin=-3.5,
+        ymax=1.5,
+        xtick={0,pi/4,...,pi},
+        xticklabels={$0$,,$\frac{\pi}{2}$,,$\pi$},
+        legend pos=north east,
+        legend entries={
+            $y = x\sin(2x)$,
+        },
+    ]
+    \addplot[
+        domain=0:pi,
+        -,
+    ] {x*sin(2*x)};
+    \fill[] (0,0) circle (2pt) (pi,0) circle (2pt);
+    \addplot[domain=0:pi/2, name path=A, opacity=0]{x*sin(2*x)};
+    \addplot[domain=0:pi/2, name path=B, opacity=0]{0};
+    \addplot[
+        pattern=north west lines,
+        pattern color=blue!60
+    ] fill between[of=A and B];
+    \addplot[domain=pi/2:pi, name path=C, opacity=0]{x*sin(2*x)};
+    \addplot[domain=pi/2:pi, name path=D, opacity=0]{0};
+    \addplot[
+        pattern=north east lines,
+        pattern color=brown!60
+    ] fill between[of=C and D];
+    \ifprintanswers
+    \draw[red] (pi,-1.25) node[anchor=west, text width=2in, rounded corners=5pt, fill=white, draw=red] {always include interesting points, $y = \textrm{such-and-such}$, arrowheads or closed endpoints};
+    \else
+    \fi
+    \end{axis}
+    \end{tikzpicture}
+    \caption{We will consider these two regions.}
+    \label{fig:graph-of-function-to-be-integrated-by-parts}
+\end{figure}
+
+\part[4]
+Show that the area of one of the regions is three times the area of the other region. 
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[3.5in]
+The left region has
+\begin{align*}
+    A_L &= \int_0^{\sfrac{\pi}{2}} x\sin(2x) \dif x \\
+    &= \Eval{\frac{1}{4} \sin(2x) - \frac{1}{2} x\cos(2x)}{0}{\sfrac{\pi}{2}} \\
+    &= -\frac{1}{2} \times \frac{\pi}{2} \times -1 - 0 \\
+    &= \frac{\pi}{4}.
+\end{align*}
+The right region has
+\begin{align*}
+    A_R &= \int_{\sfrac{\pi}{2}}^{\pi} x\sin(2x) \dif x \\
+    &= \Eval{\frac{1}{4} \sin(2x) - \frac{1}{2} x\cos(2x)}{\sfrac{\pi}{2}}{\pi} \\
+    &= -\frac{1}{2} \times \pi \times 1 - \left( -\frac{1}{2} \times \frac{\pi}{2} \times -1 \right) \\
+    &= -\frac{3\pi}{4}.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\end{parts}

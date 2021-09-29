@@ -1,0 +1,86 @@
+\documentclass[
+    a4paper,
+    12pt,
+    addpoints,
+    % answers,
+    noanswers,
+    hidelinks,
+]
+{exam}
+
+%%% Packages and macros
+
+\usepackage{1-preamble}
+
+%%% Page layout
+
+\input{2-layout}
+
+%%% Subject, paper and conditions
+
+\newcommand{\subject}{Stage 2 Specialist Mathematics}
+\newcommand{\papername}{SAT: Integral Calculus (Practise)}
+\newcommand{\papernameshort}{Integral Calculus (Practise)}
+\newcommand{\timelimit}{$\infty$~Minutes}
+\newcommand{\conditions}{Notes, Calculator}
+\newcommand{\paperrules}{\timelimit, \conditions}
+
+\begin{document}
+
+% \input{3-cover-letter}
+
+\begin{questions}
+
+\input{5-partial-fractions-simple}
+
+\ifprintanswers
+\threeast
+\else
+\fi
+
+\input{5-partial-fractions-medium}
+
+\threeast
+
+\input{5-odd-function}
+
+\threeast
+
+\input{5-integration-by-parts-definite-integral}
+
+\threeast
+
+\input{5-u-substitution-cotangent}
+
+\threeast
+
+\input{5-area-between-two-trigonometric-functions}
+
+\ifprintanswers
+\threeast
+\else
+\fi
+
+\input{5-u-substitution-distance-travelled}
+
+\threeast
+
+\input{5-inverse-function-definite-integral}
+
+\threeast
+
+\input{5-solid-of-revolution-partial-fractions}
+
+\threeast
+
+\input{5-integration-by-parts-absolute-value}
+
+\end{questions}
+
+\vfill
+
+\input{8-grading-table}
+
+\input{9-formulae-sheet}
+
+\end{document}

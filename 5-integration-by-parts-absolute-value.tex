@@ -1,0 +1,122 @@
+\question % 2018 Exam, Q7.
+Let $f(x) = x\ln(x + 1)$ for $x \in (-1, \infty)$. The graph of $y = f(x)$ is shown in Figure~\ref{fig:graph-of-absolute-value-of-a-logarithm-function}.
+
+\begin{parts}
+
+\part[1]
+Verify that $\displaystyle{\frac{x^2}{x + 1}} = x - 1 + \frac{1}{x + 1}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[1.5in]
+The RHS is
+\begin{align*}
+    \frac{(x - 1)(x + 1)}{x + 1} + \frac{1}{x + 1} &= \frac{(x^2 - 1) + 1}{x + 1} \\
+    &= \frac{x^2}{x + 1},
+\end{align*}
+which is the LHS.
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[3]
+Let $x > -1$ and $c$ be real numbers. Show that
+\[
+    \int x\ln(x + 1) \dif x = \frac{x^2}{2} \ln(x + 1) - \frac{1}{4}(x - 1)^2 - \frac{1}{2} \ln(x + 1) + c.
+\]
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[5.5in]
+Put $u = \ln(x + 1)$ and $\dif v = x \dif x$. By the DI method
+
+\vspace{.125in}
+
+\begin{center}
+	\begin{tabular}{lcc}
+	\toprule
+	& D & I \\
+	\midrule
+	\addlinespace
+	$+$ & $\ln(x + 1)$\tikzmark{a} & $x$ \\
+	\addlinespace
+	$-$ & $\frac{1}{x + 1}$\tikzmark{c} & \tikzmark{b}$\frac{1}{2}x^2$ \\
+	\addlinespace
+	\bottomrule
+	\end{tabular}
+	\begin{tikzpicture}[
+	    overlay,
+	    remember picture,
+	    yshift=.25\baselineskip,
+	    shorten >=.5pt,
+	    shorten <=.5pt,
+	]
+	\draw [->] ({pic cs:a}) to ({pic cs:b});
+	\draw [red, ->] ({pic cs:c}) to ({pic cs:b});
+	\end{tikzpicture}
+\end{center}
+
+\vspace{.125in}
+
+Thus,
+\[
+    \int x\ln(x + 1) \dif x =  \frac{x^2}{2} \ln(x + 1) - \frac{1}{2} \int \frac{x^2}{x + 1} \dif x,
+\]
+so by part (a),
+\begin{align*}
+    \int x\ln(x + 1) \dif x &= \frac{x^2}{2} \ln(x + 1) - \frac{1}{2} \int (x - 1) + \frac{1}{x + 1} \dif x \\
+    &= \frac{x^2}{2} \ln(x + 1) - \frac{1}{2} \left( \frac{(x - 1)^2}{2} + \ln(x + 1) \right) + c \\
+    &= \frac{x^2}{2} \ln(x + 1) - \frac{1}{4}(x - 1)^2 - \frac{1}{2} \ln(x + 1) + c.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[1]
+Sketch the graph of $g(x) = x\abs{\ln(x + 1)}$ on the axes in Figure~\ref{fig:graph-of-absolute-value-of-a-logarithm-function}.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        my axis style,
+        % axis equal image,
+        xmin=-1.25,
+        xmax=3,
+        ymin=-3.375,
+        ymax=3.375,
+        grid=both,
+    ]
+    \addplot[domain=-.95:2.5, <->] {x*ln(x + 1)} node[pos=.8, right] {$y = f(x)$};
+    \draw[dashed] (-1,-3) -- (-1, 3) node[pos=.25, left] {$x = -1$};
+    \ifprintanswers
+    \addplot[domain=-.95:0, red, <-] {x*abs(ln(x + 1))} node[pos=0, right] {$y = g(x)$};
+    \addplot[domain=-.5:0, name path=A, opacity=0] {x*abs(ln(x + 1))};
+    \addplot[domain=-.5:0, name path=B, opacity=0] {0};
+    \addplot[
+        pattern=north west lines,
+        pattern color=red!60
+    ] fill between[of=A and B];
+    \draw[semithick, red] (-.5,-.3466) -- (-.5,0) -- (0,0);
+    \fill[red] (0,0) circle (2pt) node[below right] {$(0, 0)$};
+    \draw[red] (2,-2) node[anchor=west, text width=2in, rounded corners=5pt, fill=white, draw=red] {always include interesting points, $y = \textrm{such-and-such}$, arrowheads or closed endpoints};
+    \else
+    \fi
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Sketch the graph of $y = g(x)$ here.}
+    \label{fig:graph-of-absolute-value-of-a-logarithm-function}
+\end{figure}
+
+\part[2]
+Find the \emph{exact} value of $\displaystyle{\int_{-\sfrac{1}{2}}^0 g(x) \dif x}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[3in]
+By part (b)
+\begin{align*}
+    \int_{-\sfrac{1}{2}}^0 g(x) \dif x &= \int_0^{-\sfrac{1}{2}} f(x) \dif x \\
+    &= \Eval{\frac{x^2}{2} \ln(x + 1) - \frac{1}{4}(x - 1)^2 - \frac{1}{2} \ln(x + 1) }{0}{-\frac{1}{2}} \\
+    &= \frac{1}{8}\ln(2^{-1}) - \frac{1}{4} \times \frac{9}{4} - \frac{4}{8} \ln(2^{-1}) - \left( -\frac{4}{16} \right) \\
+    &= \frac{3}{8} \ln(2) - \frac{5}{16}.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\end{parts}

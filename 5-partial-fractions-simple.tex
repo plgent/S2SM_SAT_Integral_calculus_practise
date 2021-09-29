@@ -1,0 +1,48 @@
+\question % 2019 Exam, Q1.
+
+\begin{parts}
+
+\part[1]
+Show that $\displaystyle{\frac{4}{x^2 - 4} = \frac{1}{x - 2} - \frac{1}{x + 2}}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[1.5in]
+The RHS is
+\begin{align*}
+    \frac{1}{x - 2} - \frac{1}{x + 2} &= \frac{x + 2 - (x - 2)}{(x - 2)(x + 2)} \\
+    &= \frac{4}{x^2 - 4},
+\end{align*}
+which is the LHS.
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[3]
+Hence, show that $\displaystyle{\int \frac{1}{x^2 - 4} \dif x = \frac{1}{4} \ln\!\left(\abs{\frac{x - 2}{x + 2}}\right) + c}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[3in]
+By part (a) we have
+\begin{align*}
+    \int \frac{1}{x^2 - 4} \dif x &= \frac{1}{4} \int \frac{4}{x^2 - 4} \dif x \\
+    &= \frac{1}{4} \int \frac{1}{x - 2} - \frac{1}{x + 2} \dif x \\
+    &= \frac{1}{4} (\ln(\abs{x - 2}) - \ln(\abs{x + 2})) + c \\
+    &= \frac{1}{4} \ln\!\left(\abs{\frac{x - 2}{x + 2}}\right) + c.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\part[1]
+Find the \emph{exact} value of $\displaystyle{\int_0^1 \frac{1}{x^2 - 4} \dif x}$.
+
+\begin{EnvFullwidth}
+\begin{solutionorgrid}[3in]
+By part (b) we have
+\begin{align*}
+    \int_0^1 \frac{1}{x^2 - 4} \dif x &= \frac{1}{4} \Eval{\ln\!\left(\abs{\frac{x - 2}{x + 2}}\right)}{0}{1} \\
+    &= \frac{1}{4} \ln\!\left(\abs{\frac{1 - 2}{1 + 2}}\right) \cancel{- \frac{1}{4} \ln\!\left(\abs{\frac{0 - 2}{0 + 2}}\right)} \\
+    &= -\frac{\ln(3)}{4}.
+\end{align*}
+\end{solutionorgrid}
+\end{EnvFullwidth}
+
+\end{parts}
